@@ -71,6 +71,8 @@ class BrnInputText extends StatelessWidget {
   /// 边框颜色
   final Color? borderColor;
 
+  final TextInputType? keyboardType;
+
   BrnInputText({
     this.onTextChange,
     this.onSubmit,
@@ -89,6 +91,7 @@ class BrnInputText extends StatelessWidget {
     this.textInputAction = TextInputAction.done,
     this.borderRadius,
     this.borderColor,
+    this.keyboardType
   });
 
   @override
@@ -128,7 +131,7 @@ class BrnInputText extends StatelessWidget {
       child: TextField(
         // 新增保持光标一直在文字最后
         controller: _controller,
-        keyboardType: TextInputType.multiline,
+        keyboardType: keyboardType ?? TextInputType.multiline,
         maxLength: maxLength,
         maxLengthEnforcement: MaxLengthEnforcement.enforced,
         maxLines: null,

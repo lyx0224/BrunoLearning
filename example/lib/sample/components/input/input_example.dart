@@ -43,10 +43,11 @@ class _BrnInputTextExampleState extends State<BrnInputTextExample> {
 
   Widget _inputText() {
     return BrnInputText(
+      keyboardType: TextInputType.datetime,
       maxHeight: 200,
       minHeight: 30,
       minLines: 1,
-      maxLength: 10,
+      maxLength: 100,
       bgColor: Colors.grey[200]!,
       textString: model.text ?? '',
       textInputAction: TextInputAction.newline,

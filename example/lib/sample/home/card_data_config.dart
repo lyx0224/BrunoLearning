@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:bruno/bruno.dart';
@@ -44,8 +42,17 @@ import 'package:example/sample/components/switch/radio_example.dart';
 import 'package:example/sample/components/tabbar/brn_tab_example.dart';
 import 'package:example/sample/components/tag/tag_example.dart';
 import 'package:example/sample/components/toast/toast_example.dart';
+import 'package:example/sample/liyixin/clip_demo.dart';
+import 'package:example/sample/liyixin/dialog_qf_demo.dart';
+import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
+import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
+import 'package:example/sample/liyixin/set_state_counter_demo.dart';
+import 'package:example/sample/liyixin/stream_demo.dart';
+import 'package:example/sample/liyixin/value_listenable_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../liyixin/nav_bar_tab_demo2.dart';
 
 /// 卡片信息
 class GroupInfo {
@@ -85,6 +92,7 @@ class CardDataConfig {
   /// 全部
   static List<GroupInfo> getAllGroup() {
     List<GroupInfo> list = [];
+    list.add(_getLiyixinGroup());
     list.add(_getChartGroup());
     list.add(_getDataInputGroup());
     list.add(_getOperateGroup());
@@ -163,7 +171,7 @@ class CardDataConfig {
             },
           ));
         }));
-    return GroupInfo(groupName: "数据图表", children: children, isExpand: true);
+    return GroupInfo(groupName: "数据图表", children: children);
   }
 
   /// 数据录入
@@ -566,6 +574,100 @@ class CardDataConfig {
           ));
         }));
     return GroupInfo(groupName: "内容", children: children);
+  }
+
+  static GroupInfo _getLiyixinGroup() {
+    List<GroupInfo> children = [];
+    children.add(GroupInfo(
+        groupName: "ValueListenable",
+        desc: "局部刷新",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ValueListenableDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "setState全局刷新",
+        desc: "全局刷新",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return SetStateCounterDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "RepeatBoundary",
+        desc: "局部刷新",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return RepeatBoundaryDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "NavBarTab",
+        desc: "带tab的actionbar",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return NavBarTabDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "自行实现tab",
+        desc: "自行实现TabBar",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return NavBarTabDemo2();
+            },
+          ));
+        }));
+
+    children.add(GroupInfo(
+        groupName: "Clip",
+        desc: "Clip系列用法",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ClipDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Stream",
+        desc: "Stream用法",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return StreamDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "对话框",
+        desc: "巧房风格对话框",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return DialogQfDemo();
+            },
+          ));
+        }));
+    return GroupInfo(groupName: "LiYiXin", children: children, isExpand: true);
   }
 
   /// 城市选择
