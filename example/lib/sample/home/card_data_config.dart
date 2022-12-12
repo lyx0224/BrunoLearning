@@ -42,11 +42,17 @@ import 'package:example/sample/components/switch/radio_example.dart';
 import 'package:example/sample/components/tabbar/brn_tab_example.dart';
 import 'package:example/sample/components/tag/tag_example.dart';
 import 'package:example/sample/components/toast/toast_example.dart';
+import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
 import 'package:example/sample/liyixin/dialog_qf_demo.dart';
+import 'package:example/sample/liyixin/form_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
+import 'package:example/sample/liyixin/notification_demo.dart';
+import 'package:example/sample/liyixin/offstage_visible_demo.dart';
 import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
+import 'package:example/sample/liyixin/rich_text_demo.dart';
 import 'package:example/sample/liyixin/set_state_counter_demo.dart';
+import 'package:example/sample/liyixin/stack_demo.dart';
 import 'package:example/sample/liyixin/stream_demo.dart';
 import 'package:example/sample/liyixin/value_listenable_demo.dart';
 import 'package:flutter/material.dart';
@@ -77,14 +83,7 @@ class GroupInfo {
   /// 跳转到下一个页面
   Function(BuildContext context)? navigatorPage;
 
-  GroupInfo(
-      {this.groupId,
-      this.groupName = "",
-      this.desc = "",
-      this.isExpand = false,
-      this.navigatorPage,
-      this.isSupportTheme = false,
-      this.children});
+  GroupInfo({this.groupId, this.groupName = "", this.desc = "", this.isExpand = false, this.navigatorPage, this.isSupportTheme = false, this.children});
 }
 
 /// 数据配置类
@@ -110,9 +109,7 @@ class CardDataConfig {
         desc: "数据折线图",
         navigatorPage: (BuildContext context) {
           rootBundle.loadString('assets/brokenline_data.json').then((data) {
-            var brokenData = <DBDataNodeModel>[]..addAll(
-                ((JsonDecoder().convert(data) as List?) ?? [])
-                    .map((o) => DBDataNodeModel.fromJson(o)));
+            var brokenData = <DBDataNodeModel>[]..addAll(((JsonDecoder().convert(data) as List?) ?? []).map((o) => DBDataNodeModel.fromJson(o)));
             Navigator.push(context, MaterialPageRoute(
               builder: (BuildContext context) {
                 return BrokenLineExample(brokenData);
@@ -664,6 +661,72 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return DialogQfDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Form",
+        desc: "Form 、TextFiledForm等",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return FormDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Stack",
+        desc: "stack和Positioned等配合使用",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return StackDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Notification",
+        desc: "学习Flutter事件传递",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return NotificationDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "OffStage & Visible",
+        desc: "Flutter显示隐藏控件",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return OffStageAndVisibleDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Builder",
+        desc: "为什么要多此一举?",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return BuilderDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "RichText",
+        desc: "富文本",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return RichTextDemo();
             },
           ));
         }));
