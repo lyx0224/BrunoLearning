@@ -36,7 +36,36 @@ class _RichTextDemoState extends State<RichTextDemo> {
                     ..onTap = () {
                       BrnToast.show('clicked', context);
                     }),
-            ]))
+            ])),
+            Divider(),
+            RichText(
+                textAlign: TextAlign.start, //对齐方式
+                text: TextSpan(children: [
+                  WidgetSpan(
+                      child: Icon(
+                    Icons.search,
+                    size: 16,
+                  )),
+                  TextSpan(text: '图文混排图文混排图文混排图文混排图文混排图文混排图文混排图文混排图文混。', style: TextStyle(color: Colors.blueAccent)),
+                  TextSpan(text: '文本的style必须设置，否则不可见', style: TextStyle(color: Colors.redAccent)),
+                ])),
+            Divider(),
+            RichText(
+                text: TextSpan(children: [
+              WidgetSpan(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        BrnToast.show('click', context);
+                      },
+                      child: Text('button'))),
+              TextSpan(text: '也可以自由widget拼接', style: TextStyle(color: Colors.orange)),
+            ])),
+            Divider(),
+            Text(
+              'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            )
           ],
         ),
       ),

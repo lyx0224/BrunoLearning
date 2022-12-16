@@ -45,10 +45,14 @@ import 'package:example/sample/components/toast/toast_example.dart';
 import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
 import 'package:example/sample/liyixin/dialog_qf_demo.dart';
+import 'package:example/sample/liyixin/easy_refresh.dart';
 import 'package:example/sample/liyixin/form_demo.dart';
+import 'package:example/sample/liyixin/ios_refresh_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
 import 'package:example/sample/liyixin/notification_demo.dart';
 import 'package:example/sample/liyixin/offstage_visible_demo.dart';
+import 'package:example/sample/liyixin/refreshindicator_demo.dart';
+import 'package:example/sample/liyixin/refreshindicator_scrollview_demo.dart';
 import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
 import 'package:example/sample/liyixin/rich_text_demo.dart';
 import 'package:example/sample/liyixin/set_state_counter_demo.dart';
@@ -727,6 +731,50 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return RichTextDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "EasyRefresh",
+        desc: "下拉刷新&上拉加载",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return EasyRefreshDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "RefreshIndicator",
+        desc: "系统自带的下拉刷新",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return RefreshIndicatorDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "RefreshIndicator + ScrollView",
+        desc: "系统自带的下拉刷新 + ScrollView",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return RefreshIndicatorWithScrollViewDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "CupertinoSliverRefreshControl",
+        desc: "iOS风格自带的下拉刷新（没有效果！）",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return IOSRefreshDemo();
             },
           ));
         }));
