@@ -44,6 +44,7 @@ import 'package:example/sample/components/tag/tag_example.dart';
 import 'package:example/sample/components/toast/toast_example.dart';
 import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
+import 'package:example/sample/liyixin/constraint_demo.dart';
 import 'package:example/sample/liyixin/dialog_qf_demo.dart';
 import 'package:example/sample/liyixin/easy_refresh.dart';
 import 'package:example/sample/liyixin/form_demo.dart';
@@ -51,6 +52,7 @@ import 'package:example/sample/liyixin/ios_refresh_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
 import 'package:example/sample/liyixin/notification_demo.dart';
 import 'package:example/sample/liyixin/offstage_visible_demo.dart';
+import 'package:example/sample/liyixin/physics_demo.dart';
 import 'package:example/sample/liyixin/refreshindicator_demo.dart';
 import 'package:example/sample/liyixin/refreshindicator_scrollview_demo.dart';
 import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
@@ -775,6 +777,28 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return IOSRefreshDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Physics",
+        desc: "flutter各种滚动",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return PhysicsDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "布局约束",
+        desc: "理解Flutter的布局约束",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ConstraintDemo();
             },
           ));
         }));

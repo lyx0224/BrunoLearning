@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -41,6 +43,13 @@ class _EasyRefreshDemoState extends State<EasyRefreshDemo> {
         onTap: () => _controller.callRefresh(),
       ),
       body: EasyRefresh(
+          emptyWidget: _count == 0
+              ? Container(
+                  alignment: Alignment.center,
+                  color: Colors.orange,
+                  child: Text('空视图'),
+                )
+              : null,
           controller: _controller,
           header: ClassicalHeader(),
           footer: ClassicalFooter(),
@@ -49,7 +58,14 @@ class _EasyRefreshDemoState extends State<EasyRefreshDemo> {
             await Future.delayed(Duration(seconds: 3));
             if (mounted) {
               setState(() {
-                _count = 10;
+                //Value is >= 0 and < 10
+                var intValue = Random().nextInt(10);
+                print('random: $intValue');
+                if (intValue > 5) {
+                  _count = 0;
+                } else {
+                  _count = 10;
+                }
               });
               _controller.finishRefresh(success: true);
               _controller.finishLoad(noMore: _count >= 20);

@@ -13,6 +13,12 @@ class _ValueListenableDemoState extends State<ValueListenableDemo> {
   final ValueNotifier<int> _counter = ValueNotifier(0);
 
   @override
+  void dispose() {
+    super.dispose();
+    _counter.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BrnAppBar(
@@ -26,7 +32,7 @@ class _ValueListenableDemoState extends State<ValueListenableDemo> {
           ValueListenableBuilder(
               valueListenable: _counter,
               builder: (context, value, child) {
-                return Text('${value}');
+                return Text('$value');
               }),
           OtherView()
         ],
