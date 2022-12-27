@@ -53,6 +53,7 @@ import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
 import 'package:example/sample/liyixin/notification_demo.dart';
 import 'package:example/sample/liyixin/offstage_visible_demo.dart';
 import 'package:example/sample/liyixin/physics_demo.dart';
+import 'package:example/sample/liyixin/provider/provider_demo.dart';
 import 'package:example/sample/liyixin/refreshindicator_demo.dart';
 import 'package:example/sample/liyixin/refreshindicator_scrollview_demo.dart';
 import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
@@ -600,6 +601,17 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return SetStateCounterDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Provider状态管理",
+        desc: "Provider、ChangeNotifer、Consumer",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ProviderDemo();
             },
           ));
         }));
