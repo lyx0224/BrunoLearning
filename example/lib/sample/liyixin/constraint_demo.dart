@@ -22,10 +22,12 @@ class ConstraintDemo extends StatefulWidget {
 ///           样例17：LimitedBox 和 UnconstrainedBox搭配？**仅其限制仅在获得无限约束时才适用！**
 ///
 ///           样例20：FittedBox（**理解成缩放组件**，在有限的区域内缩放） 会尝试根据 Text字体大小调整，Text一直是一行。如果去掉FiitedBox,Text换行，字体大小不变。
+///           样例22：FittedBox 只能在**有限制的宽高**中对子 widget 进行缩放
 ///           样例25：比较常用
 ///           样例27：Flex主要是类似android的多个weight，子集怎么分配宽高。
 ///           样例28（真经）：当一个 widget 告诉其子级可以比自身更小的话，我们通常称这个 widget 对其子级使用 宽松约束（loose），loose理解成wrap_content
 ///           样例29：SizedBox.expand用法！！，当一个 widget 告诉它的子级必须变成某个大小的时候，我们通常称这个 widget 对其子级使用 严格约束（tight）确切大小，Match_parent Exactly
+///                 SizedBox.expand 也可以用Container代替，但Container需要设置alignment才会填满父view
 ///
 ///           LayoutBuilder：根据父级的约束进行调整。https://api.flutter-io.cn/flutter/widgets/LayoutBuilder-class.html
 ///

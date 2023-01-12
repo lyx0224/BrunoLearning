@@ -13,6 +13,7 @@ class _SetStateCounterDemoState extends State<SetStateCounterDemo> {
 
   @override
   Widget build(BuildContext context) {
+    print('_SetStateCounterDemoState build...');
     return Scaffold(
       appBar: BrnAppBar(
         title: 'setState全局刷新',
@@ -20,7 +21,11 @@ class _SetStateCounterDemoState extends State<SetStateCounterDemo> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text('You have pushed the button this many times:'), Text('${_counter}'), BottomView()],
+          children: [
+            Text('You have pushed the button this many times:'),
+            Text('${_counter}'),
+            BottomView(),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -46,8 +51,17 @@ class _BottomViewState extends State<BottomView> {
   @override
   Widget build(BuildContext context) {
     print('_BottomViewState build...');
-    return Container(
-      child: Text('我一直被刷新啦，可以优化我的'),
+    return Row(
+      children: [
+        Text('其实我没必要跟着Counter刷新'),
+        TextButton(
+            onPressed: () {
+              setState(() {
+                ///只是刷新了_BottomViewState，父view没有刷新。这就是ValueListenableBuilder的原理，在widget内部setState
+              });
+            },
+            child: Text('只刷新我')),
+      ],
     );
   }
 }

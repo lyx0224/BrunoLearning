@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bruno/bruno.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,9 @@ class ValueListenableDemo extends StatefulWidget {
 
 class _ValueListenableDemoState extends State<ValueListenableDemo> {
   final ValueNotifier<int> _counter = ValueNotifier(0);
+
+  /// 自定义notifier
+  final DataBeanNotifier _dataBeanNotifier = DataBeanNotifier(DataBean('initName'));
 
   @override
   void dispose() {
@@ -34,14 +39,35 @@ class _ValueListenableDemoState extends State<ValueListenableDemo> {
               builder: (context, value, child) {
                 return Text('$value');
               }),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: ValueListenableBuilder<DataBean>(
+                valueListenable: _dataBeanNotifier,
+                builder: (context, value, child) => Text(
+                      '${value.name}',
+                      style: TextStyle(color: Colors.orange),
+                    )),
+          ),
           OtherView()
         ],
       )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _incrementCounter();
-        },
-        child: Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              _incrementCounter();
+            },
+            child: Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              final random = Random().nextInt(100);
+              _dataBeanNotifier.changeData('自定义ValueNotifier：李义新$random');
+            },
+            child: Icon(Icons.change_circle),
+          ),
+        ],
       ),
     );
   }
@@ -70,4 +96,21 @@ class _OtherViewState extends State<OtherView> {
       ),
     );
   }
+}
+
+/// 你也可以继承ValueNotifier实现更复杂的。
+
+class DataBeanNotifier extends ValueNotifier<DataBean> {
+  DataBeanNotifier(DataBean value) : super(value);
+
+  changeData(String? name) {
+    value.name = name;
+    notifyListeners();
+  }
+}
+
+class DataBean {
+  DataBean(this.name);
+
+  String? name;
 }

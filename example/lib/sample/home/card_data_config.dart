@@ -45,6 +45,7 @@ import 'package:example/sample/components/toast/toast_example.dart';
 import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
 import 'package:example/sample/liyixin/constraint_demo.dart';
+import 'package:example/sample/liyixin/container_demo.dart';
 import 'package:example/sample/liyixin/dialog_qf_demo.dart';
 import 'package:example/sample/liyixin/easy_refresh.dart';
 import 'package:example/sample/liyixin/form_demo.dart';
@@ -52,6 +53,7 @@ import 'package:example/sample/liyixin/ios_refresh_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
 import 'package:example/sample/liyixin/notification_demo.dart';
 import 'package:example/sample/liyixin/offstage_visible_demo.dart';
+import 'package:example/sample/liyixin/pageview_demo.dart';
 import 'package:example/sample/liyixin/physics_demo.dart';
 import 'package:example/sample/liyixin/provider/provider_demo.dart';
 import 'package:example/sample/liyixin/refreshindicator_demo.dart';
@@ -804,13 +806,35 @@ class CardDataConfig {
           ));
         }));
     children.add(GroupInfo(
-        groupName: "布局约束",
+        groupName: "[重要]布局约束",
         desc: "理解Flutter的布局约束",
         isSupportTheme: false,
         navigatorPage: (BuildContext context) {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return ConstraintDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "PageView",
+        desc: "",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return PageViewDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Container",
+        desc: "学习Container各种用法 & 输入框边框",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ContainerDemo();
             },
           ));
         }));
