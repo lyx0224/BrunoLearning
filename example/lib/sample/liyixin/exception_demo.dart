@@ -71,21 +71,47 @@ class _ExceptionDemoState extends State<ExceptionDemo> {
           Text(
               'framework层异常往往是错误的使用代码，造成底层的异常判断引起的,当出现Framework异常时，最终会显示一个异常界面(通过ErrorWidget实现)，通过FlutterError类来集中处理，默认情况下，Flutter会自动弹出一个错误界面(开发模式下为红色的错误界面，relase模式下为一个灰色界面,'
               '不会产生App的崩溃！'),
-          Text('debug下提示越界，release下截取了，页面无异常'),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'debug下提示越界，release下截取了，页面无异常',
+            style: TextStyle(color: Colors.red),
+          ),
           Row(
             children: [
               Icon(Icons.nature_sharp),
               Text('太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了太长了'),
             ],
           ),
-          Text('debug下红色错误页面，太尴尬，release下，纯黑的页面，跟乌鸦一样黑'),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'debug下红色错误页面，太尴尬，release下，纯黑的页面，跟乌鸦一样黑',
+            style: TextStyle(color: Colors.red),
+          ),
           TextButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (ctx) => DuplicatedKeyErrorPage(),
                 ));
               },
-              child: Text('相同key，模拟红色的错误页面'))
+              child: Text('相同key，模拟红色的错误页面(全屏)')),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            '局部页面异常：debug下局部是红色错误页。release下错误部分是白色！',
+            style: TextStyle(color: Colors.red),
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) => PartRedErrorPage(),
+                ));
+              },
+              child: Text('局部红色错误页面')),
         ],
       ),
     );
@@ -99,8 +125,36 @@ class DuplicatedKeyErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [Text('1', key: key), Text('2', key: key)],
+    );
+  }
+}
+
+/// 局部红色的错误页面
+class PartRedErrorPage extends StatelessWidget {
+  const PartRedErrorPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [NoErrorPage(), DuplicatedKeyErrorPage()],
+      ),
+    );
+  }
+}
+
+class NoErrorPage extends StatelessWidget {
+  const NoErrorPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 100,
+      color: Colors.orange,
+      child: Text('正常的'),
     );
   }
 }
