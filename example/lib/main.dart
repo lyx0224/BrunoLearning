@@ -1,13 +1,40 @@
+import 'dart:async';
+
 import 'package:bruno/bruno.dart';
 import 'package:example/sample/home/home.dart';
 import 'package:example/sample/liyixin/provider/cart_model.dart';
 import 'package:example/sample/liyixin/provider/catalog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    if (kReleaseMode) {
+      Zone.current.handleUncaughtError(details.exception, details.stack!);
+    } else {
+      FlutterError.dumpErrorToConsole(details);
+    }
+  };
+
+  runZonedGuarded<Future<void>>(() async {
+    runApp(MyApp());
+  }, (Object error, StackTrace s) {
+    _nativeReportCrash(error, s);
+  });
 }
+
+_nativeReportCrash(dynamic e, dynamic stackTrace) async {
+  if (!kReleaseMode) {
+    print("============================START================================");
+    print(e);
+    print("stack below :\n");
+    print(stackTrace);
+    print("============================END==================================");
+    return;
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   @override

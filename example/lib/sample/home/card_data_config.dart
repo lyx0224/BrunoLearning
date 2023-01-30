@@ -48,6 +48,7 @@ import 'package:example/sample/liyixin/constraint_demo.dart';
 import 'package:example/sample/liyixin/container_demo.dart';
 import 'package:example/sample/liyixin/dialog_qf_demo.dart';
 import 'package:example/sample/liyixin/easy_refresh.dart';
+import 'package:example/sample/liyixin/exception_demo.dart';
 import 'package:example/sample/liyixin/form_demo.dart';
 import 'package:example/sample/liyixin/ios_refresh_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
@@ -64,6 +65,7 @@ import 'package:example/sample/liyixin/set_state_counter_demo.dart';
 import 'package:example/sample/liyixin/stack_demo.dart';
 import 'package:example/sample/liyixin/stream_demo.dart';
 import 'package:example/sample/liyixin/value_listenable_demo.dart';
+import 'package:example/sample/liyixin/widgetbinding_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -835,6 +837,28 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return ContainerDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "WidgetBinding",
+        desc: "WidgetBinding 生命周期监听",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return WidgetBindingDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "异常",
+        desc: "普通异常和async异常",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return ExceptionDemo();
             },
           ));
         }));
