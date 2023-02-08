@@ -35,10 +35,18 @@ _nativeReportCrash(dynamic e, dynamic stackTrace) async {
   }
 }
 
+class KeyStore {
+  static late GlobalKey scaffoldKey;
+}
+
 
 class MyApp extends StatelessWidget {
+
+  final _scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+
   @override
   Widget build(BuildContext context) {
+    KeyStore.scaffoldKey = _scaffoldKey;
     //全局配置
     BrnInitializer.register(
         allThemeConfig: BrnAllThemeConfig(dialogConfig: BrnDialogConfig(radius: 10), commonConfig: BrnCommonConfig(brandPrimary: Color(0xFF3072F6))));
@@ -56,6 +64,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        scaffoldMessengerKey: _scaffoldKey,
         title: 'Flutter Example',
         theme: ThemeData(
           primarySwatch: Colors.blue,

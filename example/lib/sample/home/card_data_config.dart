@@ -62,6 +62,7 @@ import 'package:example/sample/liyixin/refreshindicator_scrollview_demo.dart';
 import 'package:example/sample/liyixin/repeat_boundary_demo.dart';
 import 'package:example/sample/liyixin/rich_text_demo.dart';
 import 'package:example/sample/liyixin/set_state_counter_demo.dart';
+import 'package:example/sample/liyixin/snackbar_demo.dart';
 import 'package:example/sample/liyixin/stack_demo.dart';
 import 'package:example/sample/liyixin/stream_demo.dart';
 import 'package:example/sample/liyixin/value_listenable_demo.dart';
@@ -859,6 +860,17 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return ExceptionDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "SnackBar",
+        desc: "全局context?",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return SnackBarDemo();
             },
           ));
         }));
