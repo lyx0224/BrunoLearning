@@ -66,12 +66,15 @@ import 'package:example/sample/liyixin/set_state_counter_demo.dart';
 import 'package:example/sample/liyixin/snackbar_demo.dart';
 import 'package:example/sample/liyixin/stack_demo.dart';
 import 'package:example/sample/liyixin/stream_demo.dart';
+import 'package:example/sample/liyixin/stream_demo2.dart';
 import 'package:example/sample/liyixin/value_listenable_demo.dart';
 import 'package:example/sample/liyixin/widgetbinding_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../liyixin/nav_bar_tab_demo2.dart';
+import '../liyixin/stream_demo2_1.dart';
+import '../liyixin/stream_demo3.dart';
 
 /// 卡片信息
 class GroupInfo {
@@ -674,6 +677,39 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return StreamDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Stream2",
+        desc: "Stream用法2",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return StreamDemo2();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Stream多次监听",
+        desc: "Stream多次监听",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return StreamDemo2_1();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Stream案例",
+        desc: "Stream实现多种状态的组件",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return Stream3Demo();
             },
           ));
         }));
