@@ -42,6 +42,7 @@ import 'package:example/sample/components/switch/radio_example.dart';
 import 'package:example/sample/components/tabbar/brn_tab_example.dart';
 import 'package:example/sample/components/tag/tag_example.dart';
 import 'package:example/sample/components/toast/toast_example.dart';
+import 'package:example/sample/liyixin/async_demo.dart';
 import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
 import 'package:example/sample/liyixin/constraint_demo.dart';
@@ -871,6 +872,17 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return SnackBarDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "Flutter Async",
+        desc: "异步、隔离、微任务",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return AsyncDemo();
             },
           ));
         }));

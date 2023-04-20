@@ -13,9 +13,8 @@ import 'package:flutter/material.dart';
 ///
 ///ScaffoldMessenger 的child 是 InheritedWidget
 ///
-/// 可以改造成toast, 好处是：后者的toast不会被覆盖
+/// 可以改造成toast, 好处是：后者的toast不会被覆盖，必须在Scaffold里使用
 ///
-/// 内容过长，会有问题，待修改（2023.0206）！
 ///
 class SnackBarDemo extends StatelessWidget {
   const SnackBarDemo({Key? key}) : super(key: key);
@@ -42,7 +41,7 @@ class SnackBarDemo extends StatelessWidget {
                   child: Text('show without context')),
               TextButton(
                   onPressed: () {
-                    ScaffoldToast.show(context, 'Yay! A SnackBar让吞吞吐吐');
+                    ScaffoldToast.show(context, '内容可多可少');
                   },
                   child: Text(
                     'snackbar改造成taost',
@@ -59,12 +58,6 @@ class SnackBarDemo extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Size _textSize(String text, TextStyle style) {
-    final TextPainter textPainter = TextPainter(text: TextSpan(text: text, style: style), maxLines: 1, textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: double.infinity);
-    return textPainter.size;
   }
 }
 
