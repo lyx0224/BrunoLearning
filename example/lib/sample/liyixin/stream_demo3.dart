@@ -13,6 +13,7 @@ class Stream3Demo extends StatefulWidget {
   @override
   State<Stream3Demo> createState() => _Stream3DemoState();
 }
+typedef TestFunction = String Function(String);
 
 class _Stream3DemoState extends State<Stream3Demo> {
   final RoundedLoadingButtonController _btnController1 = RoundedLoadingButtonController();
@@ -32,7 +33,19 @@ class _Stream3DemoState extends State<Stream3Demo> {
     // _btnController1.stateStream.listen((value) {
     //   print(value);
     // });
+
+    var result = _test("1", fun);
   }
+
+  String fun(String s){
+    return s;
+  }
+
+  /// 还可以这样定义方法
+  static String Function() _test(String a, TestFunction function) => (){
+    var b = function(a);
+    return b;
+};
 
   @override
   Widget build(BuildContext context) {

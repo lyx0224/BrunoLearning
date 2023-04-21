@@ -72,6 +72,7 @@ import 'package:example/sample/liyixin/widgetbinding_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../liyixin/animated_switcher_demo.dart';
 import '../liyixin/nav_bar_tab_demo2.dart';
 import '../liyixin/stream_demo2_1.dart';
 import '../liyixin/stream_demo3.dart';
@@ -666,6 +667,17 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return ClipDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "AnimatedSwitcher",
+        desc: "AnimatedSwitcher",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return AnimatedSwitcherDemo();
             },
           ));
         }));
