@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:bruno/bruno.dart';
@@ -34,6 +33,10 @@ class _StreamDemoState extends State<StreamDemo> {
       setState(() {
         _event = event;
       });
+    }, onError: (e, stacktrace) {
+      setState(() {
+        _event = e;
+      });
     });
   }
 
@@ -62,6 +65,21 @@ class _StreamDemoState extends State<StreamDemo> {
                   onTap: () {
                     _dataSink.add(Random().nextInt(10).toString());
                   },
+                ),
+                Text('${_event}')
+              ],
+            ),
+            Divider(),
+            Column(
+              children: [
+                FittedBox(
+                  child: BrnNormalButton(
+                    text: '发送错误(会走到onError，如果onError不处理，会走到沙盒统一处理)',
+                    onTap: () {
+                      _dataSink.addError('error:${Random().nextInt(10)}');
+                      // _dataSink.add(Random().nextInt(10).toString());
+                    },
+                  ),
                 ),
                 Text('${_event}')
               ],

@@ -43,6 +43,7 @@ import 'package:example/sample/components/tabbar/brn_tab_example.dart';
 import 'package:example/sample/components/tag/tag_example.dart';
 import 'package:example/sample/components/toast/toast_example.dart';
 import 'package:example/sample/liyixin/async_demo.dart';
+import 'package:example/sample/liyixin/basic_synax.dart';
 import 'package:example/sample/liyixin/builder_demo.dart';
 import 'package:example/sample/liyixin/clip_demo.dart';
 import 'package:example/sample/liyixin/constraint_demo.dart';
@@ -52,6 +53,7 @@ import 'package:example/sample/liyixin/easy_refresh.dart';
 import 'package:example/sample/liyixin/exception_demo.dart';
 import 'package:example/sample/liyixin/form_demo.dart';
 import 'package:example/sample/liyixin/ios_refresh_demo.dart';
+import 'package:example/sample/liyixin/loading_dialog_demo.dart';
 import 'package:example/sample/liyixin/nav_bar_tab_demo.dart';
 import 'package:example/sample/liyixin/notification_demo.dart';
 import 'package:example/sample/liyixin/offstage_visible_demo.dart';
@@ -733,6 +735,28 @@ class CardDataConfig {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
               return DialogQfDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "loadingdialog",
+        desc: "loading",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return LoadingDialogDemo();
+            },
+          ));
+        }));
+    children.add(GroupInfo(
+        groupName: "basic",
+        desc: "basic",
+        isSupportTheme: false,
+        navigatorPage: (BuildContext context) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return BasicSynaxDemo();
             },
           ));
         }));

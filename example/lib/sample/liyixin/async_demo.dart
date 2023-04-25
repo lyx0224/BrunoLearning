@@ -53,14 +53,42 @@ class _AsyncDemoState extends State<AsyncDemo> {
             TextButton(
               onPressed: () async {
                 /// 走进了runZonedGuarded 。后续的toast没走到
-                String result = await httpWithError(2, 'getDetail').catchError((e) {
-                  BrnToast.show("错误了！！！", context);
+                await httpWithError(2, 'getDetail').catchError((e) {
+                  print('1、错误了，会走到这一步');
                 });
-                BrnToast.show("下一步不会走到了", context);
+                BrnToast.show("下一步不会走到了（容易忽略）", context);
               },
               child: Text(
-                '单个出错的异步，走进了runZonedGuarded和自己的catch方法',
+                '【一般不会await和catchError一起使用】await catchError 不try catch',
                 style: TextStyle(color: Colors.red),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                /// 走进了runZonedGuarded 。后续的toast没走到
+                httpWithError(2, 'getDetail').then((value) {
+                  print('出错了不会走到这里');
+                }).catchError((e) {
+                  print('2、错误了，会走到这一步');
+                });
+                BrnToast.show("1、先走这一步", context);
+              },
+              child: Text(
+                '【重要 不用await】用then和catchError ',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                try {
+                  await httpWithError(2, 'getDetail');
+                } catch (e, stack) {
+                  print('1、我会走到的');
+                }
+                BrnToast.show("2、这一步会走到", context);
+              },
+              child: Text(
+                '【重要 常用】try catch 异步异常',
               ),
             ),
             TextButton(
@@ -69,13 +97,31 @@ class _AsyncDemoState extends State<AsyncDemo> {
                   http(1, 'getId'),
                   httpWithError(2, 'getDetail'),
                 ]).catchError((e) {
-                  BrnToast.show('Error啦', context);
+                  BrnToast.show('1、Error啦', context);
                 });
                 String msg = "${results[0]}, ${results[1]}";
-                BrnToast.show(msg, context);
+                BrnToast.show("这一步没走到：${msg}", context);
               },
               child: Text(
-                '其中一个异步出错，其他异步任务也拿不到结果，但可以catch',
+                '【一般await和catchError不一起使用】await并行（catchError 不try catch）',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                dynamic result;
+                try {
+                  result = await Future.wait([
+                    http(1, 'getId'),
+                    httpWithError(2, 'getDetail'),
+                  ]);
+                } catch (e, stack) {
+                  print('1、会走到');
+                }
+                BrnToast.show("2、会走到}", context);
+              },
+              child: Text(
+                '【重要】await并行（try catch）',
                 style: TextStyle(color: Colors.red),
               ),
             ),

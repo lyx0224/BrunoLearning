@@ -39,6 +39,7 @@ class _ConstraintDemoState extends State<ConstraintDemo> {
         child: Container(
           color: Colors.blue,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text('Hello!'),
               Text('Goodbye!'),
